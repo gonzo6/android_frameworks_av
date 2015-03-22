@@ -44,7 +44,7 @@ void Isp_Az(
 {
 	Word32 i, j;
 	Word16 hi, lo;
-	Word32 f1[NC16k + 1], f2[NC16k];
+	Word32 f1[NC16k + 1], f2[NC16k + 1];
 	Word16 nc;
 	Word32 t0;
 	Word16 q, q_sug;
