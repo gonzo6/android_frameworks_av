@@ -46,7 +46,7 @@ LOCAL_C_INCLUDES := \
 
 LOCAL_CFLAGS := -DOSCL_EXPORT_REF= -DOSCL_IMPORT_REF=
 
-LOCAL_CFLAGS += -Werror -Wno-error=strict-overflow
+LOCAL_CFLAGS += -Werror
 
 include $(BUILD_STATIC_LIBRARY)
 
