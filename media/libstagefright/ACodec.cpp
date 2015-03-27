@@ -1621,7 +1621,8 @@ status_t ACodec::configureCodec(
     if (video) {
         // determine need for software renderer
         bool usingSwRenderer = false;
-        if (haveNativeWindow && mComponentName.startsWith("OMX.google.")) {
+        if (haveNativeWindow && (mComponentName.startsWith("OMX.google.") ||
+                                 mComponentName.startsWith("OMX.ffmpeg."))) {
             usingSwRenderer = true;
             haveNativeWindow = false;
         }
@@ -2310,10 +2311,17 @@ status_t ACodec::setupFlacCodec(
         }
     }
 
+#ifdef QTI_FLAC_DECODER
     return setupRawAudioFormat(
             kPortIndexInput,
             sampleRate,
             numChannels, bitsPerSample);
+#else
+    return setupRawAudioFormat(
+            encoder ? kPortIndexInput : kPortIndexOutput,
+            sampleRate,
+            numChannels, bitsPerSample);
+#endif
 }
 
 status_t ACodec::setupRawAudioFormat(
